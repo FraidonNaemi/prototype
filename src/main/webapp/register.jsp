@@ -35,7 +35,7 @@
         <!-- Sign up - Form -->
         <div class="wrapper">
             <header>Sign Up</header>
-            <div class="error-field"> 
+            <div class="error-field-register"> 
                 <p><%= (emailError != null) ? emailError : ""%></p>
                 <p><%= (emailError != null) ? passError : ""%></p>
                 <p><%= (emailError != null && passError != null) ? emailPassError : ""%></p>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="field email">
                     <div class="input-area">
-                        <input type="email" name="email" placeholder="Email Address">
+                        <input type="text" name="email" placeholder="Email Address">
                         <i class="icon fas fa-envelope"></i>
                         <i class="error error-icon fas fa-exclamation-circle"></i>
                     </div>

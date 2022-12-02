@@ -465,3 +465,12 @@ nav{
 .clock-time {
   font-size: 38px;
 }
+
+/* Register */
+.error-field-register {
+    width: 75%;
+    padding: 0 10px;
+    margin: 10% auto;
+    background-color: tomato;
+    text-align: center;
+}

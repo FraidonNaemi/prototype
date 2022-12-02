@@ -30,12 +30,6 @@
             String userError = (String) session.getAttribute("userError");
         %>
         
-        <div class="content">
-            <div>
-                Login
-            </div>
-        </div>
-        
         <!-- Login -->
         <div class="wrapper-login">
             <header>Login</header>

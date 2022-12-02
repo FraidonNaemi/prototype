@@ -71,7 +71,7 @@
                 </div>
                 <div class="field email">
                     <div class="input-area">
-                        <input type="email" name="email" value="${user.email}" readonly="true">
+                        <input type="text" name="email" value="${user.email}" readonly="true">
                         <i class="icon fas fa-envelope"></i>
                         <i class="error error-icon fas fa-exclamation-circle"></i>
                     </div>

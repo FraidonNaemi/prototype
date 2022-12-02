@@ -181,6 +181,11 @@ input[type="checkbox"]{
     padding: 0 10px;
     margin: 10% auto;
     background-color: tomato;
+    text-align: center;
+}
+
+div.sign-txt{
+    text-align: center;
 }
 
 .wrapper-login{
@@ -188,7 +193,7 @@ input[type="checkbox"]{
     padding: 40px 30px 50px 30px;
     background: #fff;
     border-radius: 5px;
-    margin: 15% auto;
+    margin: 10% auto;
     align-items: center;
     box-shadow: 10px 10px 15px rgba(0,0,0,0.1);
     align-items: center;
@@ -655,9 +660,17 @@ nav{
 
 /* Strings Page */
 .strings-output{
-    margin: -190px auto;
+    margin: -215px auto;
 }
 
 .string {
     margin-bottom: 0;
+}
+
+/* Register */
+.error-field-register {
+    width: 60%;
+    padding: 0 10px;
+    margin: 10% auto;
+    background-color: tomato;
 }
