@@ -2,8 +2,10 @@ package com.model;
 
 import java.io.Serializable;
 import java.util.*;
+import javax.xml.bind.annotation.*;
 
-
+@XmlRootElement(name = "user")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User implements Serializable{
     private int ID;
     private String name;
@@ -14,7 +16,7 @@ public class User implements Serializable{
     public User() { }
 
     public User(String name, String email, String password, String DOB) {
-        this.ID = (new Random()).nextInt(999);
+        this.ID = (new Random()).nextInt(999999);
         this.name = name;
         this.email = email;
         this.password = password;
@@ -39,6 +41,10 @@ public class User implements Serializable{
     
     public boolean match(String email){
         return this.email.equals(email);
+    }
+    
+    public boolean match(User other){
+        return this.ID == other.ID;
     }
 
     public int getID() {
@@ -79,5 +85,10 @@ public class User implements Serializable{
 
     public void setDOB(String DOB) {
         this.DOB = DOB;
-    }   
+    }
+
+    @Override
+    public String toString() {
+        return  ID + "\t" + name + "\t" + email + "\t" + DOB;
+    }  
 }

@@ -601,7 +601,7 @@ nav{
 
 .string-output{
     margin-top: 0;
-    
+
 }
 
 .content-table-string {
@@ -629,12 +629,24 @@ nav{
 
 /* Account Page */
 
+input .delete-account {
+    height: 50px;
+    margin-top: 30px;
+    color: #fff;
+    padding: 0;
+    border: none;
+    background: tomato;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
 .wrapper-account {
     width: 380px;
-    height: 620px!important;
+    height: 680px!important;
     margin: auto;
-    margin-top: 200px;
-    padding: 40px 30px 50px 30px;
+    margin-top: 100px;
+    padding: 40px 30px 100px 30px;
     background: #fff;
     border-radius: 5px;
     text-align: center;
@@ -656,6 +668,47 @@ nav{
 
 .wrapper-account a:hover{
     text-decoration: underline;
+}
+
+.confirm-field {
+    width: 75%;
+    padding: 0 10px;
+    margin: 10% auto;
+    background-color: #7EBD2F;
+    text-align: center;
+    color: white;
+}
+
+.username-delete {
+    color: #ff2305;
+}
+
+.account-div {
+    display: inline-block!important;
+}
+
+.acc-td {
+    padding: 5px;
+}
+
+.delete-input-account {
+    height: 50px; 
+    width: 150px; 
+    background: #ff2305; 
+    color: white; 
+    cursor: pointer;
+}
+
+.delete-input-account:hover {
+    background: #c41b04;
+}
+
+.update-input-account {
+    height: 50px; 
+    width: 150px; 
+    background: #5372F0; 
+    color: white; 
+    margin-bottom: 30px;
 }
 
 /* Strings Page */

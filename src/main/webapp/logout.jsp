@@ -31,6 +31,10 @@
             </div>
         </div>
         
+        <% session.invalidate(); %>
+        
+        <!-- Happy Coding :) -->
+        
         <!-- Clock - Footer -->
         <div class="clock">
             <span class="clock-time"></span>

@@ -1,3 +1,4 @@
+<%@page import="java.util.*"%>
 <%@page import="com.model.Users"%>
 <%@page import="com.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -5,10 +6,9 @@
 <html lang="en" dir="ltr">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
-        <title>Home</title>
+        <title>Welcome</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
     </head>
 
     <body>
@@ -28,6 +28,12 @@
             </ul>
         </nav>
 
+        <!-- Linking welcome page to the XML -->
+        <% String filename = application.getRealPath("/WEB-INF/users.xml");%>
+        <jsp:useBean id="userDAO" class="com.model.dao.UserDAO" scope="application">
+            <jsp:setProperty name="userDAO" property="fileName" value="<%= filename%>"/>
+        </jsp:useBean>
+
         <!-- Catching the user data and regex - JSP -->
         <%
             String name = request.getParameter("name");
@@ -35,14 +41,13 @@
             String password = request.getParameter("password");
             String dob = request.getParameter("dob");
 
-            String emailRegEx = "([a-zA-Z]+)[._-]([a-zA-Z]+)@example.com";
-            String passRegEx = "[A-Z][a-z]{5,15}\\d{1,3}";
-            
+            String emailRegEx = "([a-zA-Z]+)[.]([a-zA-Z]+)@example.com";
+            String passRegEx = "([A-Z][a-z]{5,})\\d{2,}";
+
             if (!email.matches(emailRegEx) && !password.matches(passRegEx)) {
                 session.setAttribute("emailPassError", "Incorrect email and password format");
                 response.sendRedirect("register.jsp");
-            }
-            else if (!email.matches(emailRegEx)) {
+            } else if (!email.matches(emailRegEx)) {
                 session.setAttribute("emailError", "Incorrect email format");
                 response.sendRedirect("register.jsp");
             } else if (!password.matches(passRegEx)) {
@@ -50,15 +55,22 @@
                 response.sendRedirect("register.jsp");
             } else {
                 User user = new User(name, email, password, dob);
-                Users users = new Users();
-                users.add(user);
-
-                session.setAttribute("user", user);
-                session.setAttribute("users", users);
+                Users users = userDAO.getUsers();
+                User userXML = users.user(user.getEmail());
+                
+                if (userXML != null) {
+                    session.setAttribute("error", "User already exists");
+                    response.sendRedirect("register.jsp");
+                } else {
+                    users.add(user);
+                    userDAO.save(users, filename);
+                    session.setAttribute("user", user);
+                    response.sendRedirect("main.jsp");
+                }
             }
         %>
 
-        <!-- Table Data -->
+<!--         Table Data 
         <table class="content-table">
             <thead>
                 <tr>
@@ -68,22 +80,22 @@
             <tbody>
                 <tr>
                     <td class="td-title">Name: </td>
-                    <td><%= name %></td>
+                    <td><%= name%></td>
                 </tr>
                 <tr>
                     <td class="td-title">Email: </td>
-                    <td><%= email %></td>
+                    <td><%= email%></td>
                 </tr>
                 <tr>
                     <td class="td-title">Password: </td>
-                    <td><%= password %></td>
+                    <td><%= password%></td>
                 </tr>
                 <tr>
                     <td class="td-title">Date of Birth: </td>
-                    <td><%= dob %></td>
+                    <td><%= dob%></td>
                 </tr>
             </tbody>
-        </table>
+        </table>-->
 
         <!-- Clock - Footer -->
         <div class="clock">

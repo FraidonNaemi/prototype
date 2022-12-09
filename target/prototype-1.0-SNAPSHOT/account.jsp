@@ -1,3 +1,4 @@
+<%@page import="com.model.Users"%>
 <%@page import="com.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,26 +25,38 @@
                 <li><a href="logout.jsp">Logout</a></li>
                 <li><a class="active" href="#">Account</a></li>
                 <li><a href="main.jsp">Main</a></li>
-                
             </ul>
         </nav>
 
         <%! 
             User user;
         %>
+        
+        <% String filename = application.getRealPath("/WEB-INF/users.xml"); %>
+        <jsp:useBean id="userDAO" class="com.model.dao.UserDAO" scope="application">
+            <jsp:setProperty name="userDAO" property="fileName" value="<%= filename %>"/>
+        </jsp:useBean>
+        
         <%
             String submitted = request.getParameter("submitted");
-
-            if (submitted != null && submitted.equals("submitted")) {
+            
+            // String submitted = (String) session.getAttribute("submitted");
+            
+            if(submitted != null && submitted.equals("submitted")) {
                 int ID = Integer.parseInt(request.getParameter("ID"));
                 String name = request.getParameter("name");
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
                 String dob = request.getParameter("dob");
                 user = (User) session.getAttribute("user");
-                user.update(ID, name, email, password, dob);     
+                user.update(ID, name, email, password, dob);
+                
+                Users users = userDAO.getUsers();
+                
+                userDAO.update(users, user);
+                
                 session.setAttribute("user", user);
-            }else{
+            } else {
                 user = (User) session.getAttribute("user");
             }
         %>
@@ -51,10 +64,10 @@
         <!-- Sign up - Form -->
         <div class="wrapper-account">
             <header>Edit Account</header>
-            <div class="error-field"> 
-                <p><%= (submitted != null) ? "Update was Successful" : "" %></p>                
+            <div class="confirm-field">
+                <p><%= (submitted != null) ? "Updated successfully" : "" %></p>                
             </div>
-            <form method="POST" action="welcome.jsp">
+            <form method="POST" action="">
                 <div class="field ID">
                     <div class="input-area">
                         <input type="text" name="ID" value="${user.ID}" readonly="true">
@@ -89,10 +102,22 @@
                     </div>
                 </div>
                 <input type="hidden" name="submitted" value="submitted">
-                <input type="submit" value="Update">
+                <div class="account-div">
+                    <table class="account-table"> 
+                        <tr> 
+                            <td class="acc-td"><a href="delete.jsp"><input type="" class="delete-input-account" value="Delete"></a></td>
+                            <td class="acc-td"><input type="submit" class="update-input-account" value="Update"></td>
+                        </tr>
+                    </table>
+                </div>
             </form>
         </div>
         
+        <%  
+            submitted = "";
+            session.setAttribute("submitted",submitted);
+        %>            
+         
         <!-- Clock - Footer -->
         <div class="clock">
             <span class="clock-time"></span>

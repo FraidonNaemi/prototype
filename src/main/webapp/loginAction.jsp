@@ -28,36 +28,25 @@
             </ul>
         </nav>
         
+        <!-- Linking to the DAO -->
+        <% String filename = application.getRealPath("/WEB-INF/users.xml");%>
+        <jsp:useBean id="userDAO" class="com.model.dao.UserDAO" scope="application">
+            <jsp:setProperty name="userDAO" property="fileName" value="<%=filename%>"/>
+        </jsp:useBean>
+        
         <%  
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             
-            Users users = (Users) session.getAttribute("users");
-            User user = users.user(email, password); 
+            Users users = userDAO.getUsers();
+                        
+            User user = users.user(email, password);
         %>
         
-        <% if(user != null) { %>
-            <!-- Table Data -->
-            <table class="content-table">
-                <thead>
-                    <tr>
-                        <th colspan="2"><h3>User Information</h3></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="td-title">Email: </td>
-                        <td><%= email %></td>
-                    </tr>
-                    <tr>
-                        <td class="td-title">Password: </td>
-                        <td><%= password %></td>
-                    </tr>
-                </tbody>
-            </table> 
-        
-            
-        <% } else {
+        <% if(user != null) {
+            session.setAttribute("user", user);
+            response.sendRedirect("main.jsp");
+        } else {
             session.setAttribute("userError", "User does not exist");
             response.sendRedirect("login.jsp"); 
         } %>
