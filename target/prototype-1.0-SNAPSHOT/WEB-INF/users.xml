@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="xsl/users.xsl"?>
 <users>
     <user>
         <ID>123456</ID>
         <name>Admin Admin</name>
         <email>admin.admin@example.com</email>
         <password>Helloadmin123</password>
+        <dob>04/09/1985</dob>
     </user>
     <user>
         <ID>123457</ID>
         <name>Test Test</name>
         <email>test.test@example.com</email>
         <password>Hellotest123</password>
-        <DOB></DOB>
+        <dob>1999-02-12</dob>
     </user>
 </users>

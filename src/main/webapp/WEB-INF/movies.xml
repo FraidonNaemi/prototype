@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shop>
+    <name>Movie Land</name>
+    <movies>
+        <movie>
+            <title>Avatar: The Way of Water</title>
+            <cdset>3</cdset>
+            <price>36.90</price>
+            <rating>9</rating>
+        </movie>
+        <movie>
+            <title>Prey</title>
+            <cdset>4</cdset>
+            <price>26.50</price>
+            <rating>7</rating>
+        </movie>
+        <movie>
+            <title>Crimes of the Future</title>
+            <cdset>3</cdset>
+            <price>60.00</price>
+            <rating>5</rating>
+        </movie>
+        <movie>
+            <title>Sipderhead</title>
+            <cdset>8</cdset>
+            <price>102.00</price>
+            <rating>8</rating>
+        </movie>
+        <movie>
+            <title>Nope</title>
+            <cdset>5</cdset>
+            <price>32.50</price>
+            <rating>5</rating>
+        </movie>
+    </movies>
+</shop>

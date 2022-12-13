@@ -57,9 +57,19 @@
                 
                 session.setAttribute("user", user);
             } else {
-                user = (User) session.getAttribute("user");
+                String userViewEmail = request.getParameter("email");
+                Users users = userDAO.getUsers();
+                User userView = users.user(userViewEmail);
+                if(userView != null) {
+                    user = userView;
+                    session.setAttribute("user", user);
+                } else {
+                    user = (User) session.getAttribute("user");
+                }
             }
         %>
+                    
+        
         
         <!-- Sign up - Form -->
         <div class="wrapper-account">
@@ -70,28 +80,28 @@
             <form method="POST" action="">
                 <div class="field ID">
                     <div class="input-area">
-                        <input type="text" name="ID" value="${user.ID}" readonly="true">
+                        <input type="text" name="ID" value="<%= user.getID()%>" readonly="true">
                         <i class="icon fas fa-id"></i>
                         <i class="error error-icon fas fa-exclamation-circle"></i>
                     </div>
                 </div>
                 <div class="field name">
                     <div class="input-area">
-                        <input type="text" name="name" value="${user.name}">
+                        <input type="text" name="name" value="<%= user.getName()%>">
                         <i class="icon fas fa-user"></i>
                         <i class="error error-icon fas fa-exclamation-circle"></i>
                     </div>
                 </div>
                 <div class="field email">
                     <div class="input-area">
-                        <input type="text" name="email" value="${user.email}" readonly="true">
+                        <input type="text" name="email" value="<%= user.getEmail()%>" readonly="true">
                         <i class="icon fas fa-envelope"></i>
                         <i class="error error-icon fas fa-exclamation-circle"></i>
                     </div>
                 </div>
                 <div class="field password">
                     <div class="input-area">
-                        <input type="text" name="password" value="${user.password}">
+                        <input type="text" name="password" value="<%= user.getPassword()%>">
                         <i class="icon fas fa-lock"></i>
                         <i class="error error-icon fas fa-exclamation-circle"></i>
                     </div>
