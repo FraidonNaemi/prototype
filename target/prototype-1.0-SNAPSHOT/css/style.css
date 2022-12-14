@@ -643,7 +643,7 @@ input .delete-account {
 
 .wrapper-account {
     width: 380px;
-    height: 680px!important;
+    height: 650px!important;
     margin: auto;
     margin-top: 100px;
     padding: 40px 30px 100px 30px;
@@ -703,12 +703,41 @@ input .delete-account {
     background: #c41b04;
 }
 
+.account-delete-button:hover {
+    text-decoration: none;
+    background: #c41b04!important;
+}
+
+.account-home-button:hover {
+    text-decoration: none!important;
+    background: black;
+}
+
+.account-dashboard-button:hover {
+    text-decoration: none!important;
+    background: black;
+}
+
+.account-delete-link:hover {
+    text-decoration: none!important;
+    background: #c41b04;
+}
+
 .update-input-account {
     height: 50px; 
-    width: 150px; 
+    width: 100px!important; 
     background: #5372F0; 
     color: white; 
     margin-bottom: 30px;
+}
+
+.delete-button {
+/*    height: 50px; 
+    width: 150px; */
+    padding: 20px;
+    background: #ff2305; 
+/*    color: white; 
+    cursor: pointer;*/
 }
 
 /* Strings Page */

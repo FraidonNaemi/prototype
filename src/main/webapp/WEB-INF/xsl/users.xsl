@@ -12,7 +12,7 @@
         </html>
     </xsl:template>
     <xsl:template match="users">
-        <table border="1" cellspacing="15" style="margin-left: 700px; font-size: 20px; margin-top: 350px;">
+        <table border="1" cellspacing="15" style="margin-left: 600px; font-size: 20px; margin-top: 300px;">
             <thead style="background: black; color: white; padding: 0 5px;">
                 <th>ID</th>
                 <th>Name</th>

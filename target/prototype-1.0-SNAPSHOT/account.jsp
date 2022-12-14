@@ -8,7 +8,7 @@
         <title>Account</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-        
+
     </head>
 
     <body>
@@ -28,54 +28,50 @@
             </ul>
         </nav>
 
-        <%! 
+        <%!
             User user;
         %>
-        
-        <% String filename = application.getRealPath("/WEB-INF/users.xml"); %>
+
+        <% String filename = application.getRealPath("/WEB-INF/users.xml");%>
         <jsp:useBean id="userDAO" class="com.model.dao.UserDAO" scope="application">
-            <jsp:setProperty name="userDAO" property="fileName" value="<%= filename %>"/>
+            <jsp:setProperty name="userDAO" property="fileName" value="<%= filename%>"/>
         </jsp:useBean>
-        
+
         <%
             String submitted = request.getParameter("submitted");
-            
-            // String submitted = (String) session.getAttribute("submitted");
-            
-            if(submitted != null && submitted.equals("submitted")) {
+            String emailView = request.getParameter("emailView");
+            Users users = userDAO.getUsers();
+
+            if (emailView != null) {
+                user = users.user(emailView);
+                session.setAttribute("emailView", emailView);
+            } else {
+                user = (User) session.getAttribute("user");
+            }
+
+            if (submitted != null && submitted.equals("submitted")) {
                 int ID = Integer.parseInt(request.getParameter("ID"));
                 String name = request.getParameter("name");
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
                 String dob = request.getParameter("dob");
-                user = (User) session.getAttribute("user");
-                user.update(ID, name, email, password, dob);
                 
-                Users users = userDAO.getUsers();
+                emailView = (String)session.getAttribute("emailView");
                 
+                if(emailView != null)
+                    user = users.user(emailView);
+                
+                    user.update(ID, name, email, password, dob);
                 userDAO.update(users, user);
-                
                 session.setAttribute("user", user);
-            } else {
-                String userViewEmail = request.getParameter("email");
-                Users users = userDAO.getUsers();
-                User userView = users.user(userViewEmail);
-                if(userView != null) {
-                    user = userView;
-                    session.setAttribute("user", user);
-                } else {
-                    user = (User) session.getAttribute("user");
-                }
             }
         %>
-                    
-        
-        
+
         <!-- Sign up - Form -->
-        <div class="wrapper-account">
+        <div class="wrapper-account" style="height: 650px!important;">
             <header>Edit Account</header>
             <div class="confirm-field">
-                <p><%= (submitted != null) ? "Updated successfully" : "" %></p>                
+                <p><%= (submitted != null) ? "Updated successfully" : ""%></p>                
             </div>
             <form method="POST" action="">
                 <div class="field ID">
@@ -114,20 +110,27 @@
                 <input type="hidden" name="submitted" value="submitted">
                 <div class="account-div">
                     <table class="account-table"> 
-                        <tr> 
-                            <td class="acc-td"><a href="delete.jsp"><input type="" class="delete-input-account" value="Delete"></a></td>
-                            <td class="acc-td"><input type="submit" class="update-input-account" value="Update"></td>
+                        <tr>
+                            <td class="acc-td">7>y
+                                <% if (emailView != null) { %>
+                                <span class="account-home-button" style="background: #1b1b1b; color: white; padding-top: 14px; padding-bottom: 14px; padding-left: 20px; padding-right: 20px; border-radius: 5px; font-size: 18px;"><a class="button" href="index.jsp" style="color: white;">Home</a> </span>
+                                <%} else { %>
+                                <span class="account-dashboard-button" style="background: #ff2305; color: white; padding-top: 14px; padding-bottom: 14px; padding-left: 20px; padding-right: 20px; border-radius: 5px; font-size: 18px;"><a class="button" href="main.jsp" style="color: white;">Dashboard</a></span>
+                                <%}%>
+                            </td>
+                            <td class="acc-td"><span class="account-delete-button" style="background: #ff2305; color: white; padding-top: 14px; padding-bottom: 14px; padding-left: 20px; padding-right: 20px; border-radius: 5px; font-size: 18px;"><a href="delete.jsp" class="account-delete-link" style="color: white;">Delete</a></span></td>
+                            <td class="acc-td"><input type="submit" class="update-input-account" value="Update" style="width: 100px;"></td>
                         </tr>
                     </table>
                 </div>
             </form>
         </div>
-        
-        <%  
+
+        <%
             submitted = "";
-            session.setAttribute("submitted",submitted);
+            session.setAttribute("submitted", submitted);
         %>            
-         
+
         <!-- Clock - Footer -->
         <div class="clock">
             <span class="clock-time"></span>

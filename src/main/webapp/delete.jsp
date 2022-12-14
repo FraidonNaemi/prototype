@@ -27,15 +27,32 @@
             </ul>
         </nav>
 
+        <%!
+            User user;
+        %>
+
         <% String filename = application.getRealPath("/WEB-INF/users.xml");%>
         <jsp:useBean id="userDAO" class="com.model.dao.UserDAO" scope="application">
             <jsp:setProperty name="userDAO" property="fileName" value="<%=filename%>"/>
         </jsp:useBean>
-        
+
         <%
-            User user = (User) session.getAttribute("user");
+            String emailView = request.getParameter("email");
             Users users = userDAO.getUsers();
-            userDAO.delete(users, user);
+
+            if (emailView != null) {
+                user = users.user(emailView);
+
+                if (user != null) {
+                    users = userDAO.getUsers();
+                    userDAO.delete(users, user);
+
+                    response.sendRedirect("admin.jsp");
+                }
+            } else {
+                user = (User) session.getAttribute("user");
+                userDAO.delete(users, user);
+            }
         %>
 
         <div class="content">
