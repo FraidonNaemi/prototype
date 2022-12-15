@@ -3,9 +3,9 @@
 <users>
     <user>
         <ID>123456</ID>
-        <name>Admin Admin</name>
-        <email>admin.admin@example.com</email>
-        <password>Helloadmin123</password>
+        <name>User User</name>
+        <email>user.user@example.com</email>
+        <password>Hellouser123</password>
         <dob>04/09/1985</dob>
     </user>
     <user>

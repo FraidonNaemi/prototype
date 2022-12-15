@@ -2,11 +2,12 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="5.0">
     <xsl:output method="html"/>
     <xsl:template match="users">
-        <html  bgcolor="#edf2f2" style="font-size: 24px; font-family: Arial;">
+        <html  bgcolor="#EDF2F2" style="font-size: 24px; font-family: Arial;">
             <head>
-                <title>Admin View</title>  
+                <title>Admin View</title>
+                
             </head>
-            <body style="background-color: #edf2f2;">
+            <body style="background-color: #EDF2F2;">
                 <xsl:apply-templates/>
             </body>
         </html>
@@ -30,11 +31,11 @@
             <td><xsl:value-of select="name"/></td>
             <td>
                 <xsl:variable name="emailurl" select="email"></xsl:variable>
-                <a href="http://localhost:8080/prototype/account.jsp?email={$emailurl}" style="text-decoration: none; color black;">
+                <a href="http://localhost:8080/prototype/account.jsp?emailView={$emailurl}" style="text-decoration: none; color black;">
                     <xsl:value-of select="email"/>
                 </a>
             </td>
             <td><xsl:value-of select="DOB"/></td>
-        </tr>        
+        </tr>
     </xsl:template>
 </xsl:stylesheet>

@@ -21,7 +21,7 @@
             </label>
             <ul>
                 <li><a class="active" href="#">Home</a></li>
-                <li><a href="admin.jsp">Admin</a></li>
+                <li><a href="adminLogin.jsp">Admin</a></li>
                 <li><a href="register.jsp">Register</a></li>
                 <li><a href="login.jsp">Login</a></li>
                 <li><a href="strings.jsp">Strings</a></li>
