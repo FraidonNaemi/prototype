@@ -10,6 +10,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     </head>
     <body>
+        <%
+            String emailView = request.getParameter("emailView");
+        %>
+        
         <!-- Navigation Bar -->
         <nav>
             <div class="logo">
@@ -20,9 +24,15 @@
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
-                <li><a href="logout.jsp">Logout</a></li>
+                <li> 
+                        <% if (emailView != null) { %>
+                        <a class="button" href="adminView.jsp">Admin</a>
+                        <%} else { %>
+                        <a class="button" href="main.jsp">Dashboard</a>
+                        <%}%>
+                </li>
                 <li><a class="active" href="#">Account</a></li>
-                <li><a href="main.jsp">Main</a></li>
+                <li><a href="logout.jsp">Logout</a></li>
             </ul>
         </nav>
         <%!
@@ -34,7 +44,6 @@
         </jsp:useBean>
         <%
             String submitted = request.getParameter("submitted");
-            String emailView = request.getParameter("emailView");
             Users users = userDAO.getUsers();
             if (emailView != null) {
                 user = users.user(emailView);
@@ -48,9 +57,10 @@
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
                 String dob = request.getParameter("dob");
-                emailView = (String)session.getAttribute("emailView");
-                if(emailView != null)
+                emailView = (String) session.getAttribute("emailView");
+                if (emailView != null) {
                     user = users.user(emailView);
+                }
                 user.update(ID, name, email, password, dob);
                 userDAO.update(users, user);
                 session.setAttribute("user", user);
@@ -100,13 +110,6 @@
                 <div class="account-div">
                     <table class="account-table">
                         <tr>
-                            <td class="acc-td">
-                                <% if (emailView != null) { %>
-                                <span class="account-home-button" style="background: #1B1B1B; color: white; padding-top: 14px; padding-bottom: 14px; padding-left: 20px; padding-right: 20px; border-radius: 5px; font-size: 18px;"><a class="button" href="index.jsp" style="color: white;">Home</a> </span>
-                                <%} else { %>
-                                <span class="account-dashboard-button" style="background: #FF2305; color: white; padding-top: 14px; padding-bottom: 14px; padding-left: 20px; padding-right: 20px; border-radius: 5px; font-size: 18px;"><a class="button" href="main.jsp" style="color: white;">Dashboard</a></span>
-                                <%}%>
-                            </td>
                             <td class="acc-td"><span class="account-delete-button" style="background: #FF2305; color: white; padding-top: 14px; padding-bottom: 14px; padding-left: 20px; padding-right: 20px; border-radius: 5px; font-size: 18px;"><a href="delete.jsp" class="account-delete-link" style="color: white;">Delete</a></span></td>
                             <td class="acc-td"><input type="submit" class="update-input-account" value="Update" style="width: 100px;"></td>
                         </tr>

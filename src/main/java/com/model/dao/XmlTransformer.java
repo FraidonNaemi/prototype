@@ -35,23 +35,22 @@ public class XmlTransformer{
         transformer.transform(xmlSource, systemOutResult);        
     }
     
-//    public void transform(String xslPath, Admins admins, StreamResult result) throws JAXBException, TransformerConfigurationException, TransformerException{
-//        // Step 1: Create TransformerFactory instance
-//        TransformerFactory tf = TransformerFactory.newInstance();
-//        
-//        // Step 2: Load the XSL source file into StreamSource
-//        StreamSource xslSource = new StreamSource(xslPath);
-//        
-//        // Step 3: Load the XML data source - using JAXB
-//        JAXBContext jc = JAXBContext.newInstance(Admins.class);
-//        JAXBSource xmlSource = new JAXBSource(jc, admins);
-//        
-//        // Step 4: Create a transformer instance using xsl document
-//        Transformer transformer = tf.newTransformer(xslSource);
-//        
-//        // Step 5: transform
-//        transformer.transform(xmlSource, result);
-//        StreamResult systemOutResult = new StreamResult(System.out);
-//        transformer.transform(xmlSource, systemOutResult);        
-//    }
+    public void transform(String xslPath, String xmlPath, StreamResult result) throws TransformerConfigurationException, TransformerException{
+        //step 1: Create TransformerFactory instance
+        TransformerFactory tf = TransformerFactory.newInstance();
+        
+        //Step 2: Load the XSL source file into StreamSource
+        StreamSource xslSource = new StreamSource(xslPath);
+        
+        //Step 3: Load the XML source file into StreamSource
+        StreamSource xmlSource = new StreamSource(xmlPath);
+        
+        //Step 4: Create a transformer instance using xsl document
+        Transformer transformer = tf.newTransformer(xslSource);
+        
+        //Step 5: transform
+        transformer.transform(xmlSource, result);
+        StreamResult systemOutResult = new StreamResult(System.out);
+        transformer.transform(xmlSource, systemOutResult);   
+    }
 }

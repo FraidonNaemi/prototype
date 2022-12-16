@@ -32,15 +32,14 @@
             <jsp:setProperty name="userDAO" property="fileName" value="<%=filename%>"/>
         </jsp:useBean>
         <%
+           Users users = userDAO.getUsers();
             String emailView = (String) session.getAttribute("emailView");
-            Users users = userDAO.getUsers();
             if (emailView != null) {
                 user = users.user(emailView);
                 if (user != null) {
-                    users = userDAO.getUsers();
+                    userDAO.delete(users, user);
+                    response.sendRedirect("adminView.jsp");
                 }
-                userDAO.delete(users, user);
-                response.sendRedirect("adminView.jsp");
             } else {
                 user = (User) session.getAttribute("user");
                 userDAO.delete(users, user);

@@ -23,10 +23,9 @@
                 <i class="fas fa-bars"></i>
             </label>
             <ul>
+                <li><a class="active" href="#">Dashboard</a></li>
                 <li><a href="account.jsp">Account</a></li>
                 <li><a href="logout.jsp">Logout</a></li>
-                <li><a class="active" href="#">Main</a></li>
-                <li><a href="test.jsp">Test</a></li>
             </ul>
         </nav>
         
