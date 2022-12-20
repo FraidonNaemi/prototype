@@ -26,9 +26,9 @@
             <ul>
                 <li> 
                         <% if (emailView != null) { %>
-                        <a class="button" href="adminView.jsp">Admin</a>
+                            <a href="adminView.jsp">Admin</a>
                         <%} else { %>
-                        <a class="button" href="main.jsp">Dashboard</a>
+                            <a href="main.jsp">Dashboard</a>
                         <%}%>
                 </li>
                 <li><a class="active" href="#">Account</a></li>
@@ -45,13 +45,13 @@
         <%
             String submitted = request.getParameter("submitted");
             Users users = userDAO.getUsers();
+            
             if (emailView != null) {
                 user = users.user(emailView);
                 session.setAttribute("emailView", emailView);
             } else {
                 user = (User) session.getAttribute("user");
-            }
-            if (submitted != null && submitted.equals("submitted")) {
+            } if (submitted != null && submitted.equals("submitted")) {
                 int ID = Integer.parseInt(request.getParameter("ID"));
                 String name = request.getParameter("name");
                 String email = request.getParameter("email");

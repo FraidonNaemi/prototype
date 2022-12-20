@@ -5,26 +5,37 @@ import com.model.Users;
 import java.io.*;
 import javax.xml.bind.*;
 
-public class UserDAO implements Serializable{
+public class UserDAO implements Serializable {
+
     private Users users;
     private String fileName;
-    
-    public UserDAO(){ }
-    
-    public void setFileName(String fileName) throws JAXBException, FileNotFoundException{
+
+    public UserDAO() {
+    }
+
+    public void setFileName(String fileName) throws JAXBException, FileNotFoundException {
         this.fileName = fileName;
-        
+
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Unmarshaller um = jc.createUnmarshaller();
         FileInputStream fin = new FileInputStream(fileName);
-        
+
         users = (Users) um.unmarshal(fin);
     }
-    
-    public void save(Users users, String filename) throws JAXBException, FileNotFoundException, IOException{
+
+    public String marshal(Users users) throws JAXBException {
+        StringWriter writer = new StringWriter();
+        JAXBContext jc = JAXBContext.newInstance(Users.class);
+        Marshaller m = jc.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        m.marshal(users, writer);
+        return writer.toString();
+    }
+
+    public void save(Users users, String filename) throws JAXBException, FileNotFoundException, IOException {
         this.users = users;
         this.fileName = filename;
-        
+
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Marshaller m = jc.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -33,37 +44,42 @@ public class UserDAO implements Serializable{
         //m.marshal(users, System.out);  //this is used to prove that the objects are mapped to XML
         fout.close();
     }
-    
-    public Users read(String filename) throws JAXBException, FileNotFoundException{
+
+    public Users read(String filename) throws JAXBException, FileNotFoundException {
         this.fileName = filename;
-        
+
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Unmarshaller um = jc.createUnmarshaller();
         FileInputStream fin = new FileInputStream(filename);
         users = (Users) um.unmarshal(fin);
-        
+
         return users;
     }
-    
-    public void update(Users users, User user) throws JAXBException, IOException{
+
+    public void update(Users users, User user) throws JAXBException, IOException {
         this.users = users;
         this.users.remove(user);
         save(this.users, fileName);
-        
+
         this.users.add(user);
         save(this.users, fileName);
     }
     
-    public void delete(Users users, User user) throws JAXBException, IOException{
+    public void updatePassword(Users users, User user, String password) {
+        this.users = users;
+        
+    }
+
+    public void delete(Users users, User user) throws JAXBException, IOException {
         this.users = users;
         this.users.remove(user);
         save(this.users, fileName);
     }
 
-    public Users getUsers(){
+    public Users getUsers() {
         return this.users;
     }
-    
+
     public String getFilePath() {
         return fileName;
     }

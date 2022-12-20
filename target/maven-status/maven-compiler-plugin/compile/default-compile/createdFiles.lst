@@ -7,4 +7,5 @@ com\model\dao\AdminDAO.class
 com\model\dao\XmlTransformer.class
 com\utils\In.class
 com\model\Admin.class
+com\rest\UserService.class
 com\model\dao\UserDAO.class
