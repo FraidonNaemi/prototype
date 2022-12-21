@@ -1,3 +1,4 @@
+<%@page import="com.rest.client.UserServiceClient"%>
 <%@page import="javax.xml.transform.stream.StreamResult"%>
 <%@page import="com.model.dao.XmlTransformer"%>
 <%@page import="com.model.Users"%>
@@ -39,7 +40,7 @@
         <%
             Users users = userDAO.getUsers();
             XmlTransformer transformer = new XmlTransformer();
-            transformer.transform(xslPath, users, new StreamResult(out));
+            transformer.transform(xslPath, UserServiceClient.xmlPath(), new StreamResult(out));
         %>
         <!-- Clock - Footer -->
         <div class="clock">

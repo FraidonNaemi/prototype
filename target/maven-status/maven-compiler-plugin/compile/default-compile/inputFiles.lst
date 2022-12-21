@@ -1,11 +1,12 @@
-C:\Users\236339\Documents\NetBeansProjects\prototype\src\main\java\com\app\TransformerApp.java
-C:\Users\236339\Documents\NetBeansProjects\prototype\src\main\java\com\model\Admins.java
-C:\Users\236339\Documents\NetBeansProjects\prototype\src\main\java\com\model\Admin.java
-C:\Users\236339\Documents\NetBeansProjects\prototype\src\main\java\com\model\dao\UserDAO.java
-C:\Users\236339\Documents\NetBeansProjects\prototype\src\main\java\com\model\Users.java
-C:\Users\236339\Documents\NetBeansProjects\prototype\src\main\java\com\rest\UserService.java
-C:\Users\236339\Documents\NetBeansProjects\prototype\src\main\java\com\model\dao\AdminDAO.java
-C:\Users\236339\Documents\NetBeansProjects\prototype\src\main\java\com\app\JAXBapp.java
-C:\Users\236339\Documents\NetBeansProjects\prototype\src\main\java\com\model\User.java
-C:\Users\236339\Documents\NetBeansProjects\prototype\src\main\java\com\model\dao\XmlTransformer.java
-C:\Users\236339\Documents\NetBeansProjects\prototype\src\main\java\com\utils\In.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\rest\UserService.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\utils\In.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\app\JAXBapp.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\model\Admins.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\rest\client\UserServiceClient.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\model\dao\AdminDAO.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\model\User.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\model\Users.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\model\dao\UserDAO.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\app\TransformerApp.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\model\Admin.java
+C:\Users\236369\Desktop\Modules\George's module 3\Fraidon's copy\src\main\java\com\model\dao\XmlTransformer.java

@@ -1,4 +1,5 @@
 com\app\JAXBapp.class
+com\rest\client\UserServiceClient.class
 com\model\Admins.class
 com\model\Users.class
 com\app\TransformerApp.class

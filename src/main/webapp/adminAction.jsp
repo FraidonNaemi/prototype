@@ -45,7 +45,7 @@
         
         <% if(admin != null) {
             session.setAttribute("admin", admin);
-            response.sendRedirect("adminView.jsp");
+            response.sendRedirect("admin5.jsp");
         } else {
             session.setAttribute("adminError", "Admin does not exist");
             response.sendRedirect("adminLogin.jsp"); 
