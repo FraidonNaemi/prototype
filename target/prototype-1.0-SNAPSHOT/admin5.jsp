@@ -33,7 +33,9 @@
             request.removeAttribute("email");
         %>
         <% String filename = application.getRealPath("/WEB-INF/users.xml");%>
-        <% String xslPath = application.getRealPath("/xsl/user.xsl");%>
+        <% String xslPath = application.getRealPath("/xsl/users.xsl");%>
+                <% String xslUserPath = application.getRealPath("/xsl/user.xsl");%>
+
         <jsp:useBean id="userDAO" class="com.model.dao.UserDAO" scope="application">
             <jsp:setProperty name="userDAO" property="fileName" value="<%=filename%>"/>
         </jsp:useBean>

@@ -40,7 +40,7 @@
         <%
             Users users = userDAO.getUsers();
             XmlTransformer transformer = new XmlTransformer();
-            transformer.transform(xslPath, UserServiceClient.xmlPath(), new StreamResult(out));
+            transformer.transform(xslPath, users, new StreamResult(out));
         %>
         <!-- Clock - Footer -->
         <div class="clock">

@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><user><ID>123456</ID><name>User User</name><email>user.user@example.com</email><password>Hellouser123</password></user>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><users><user><ID>123456</ID><name>User User</name><email>user.user@example.com</email><password>Hellouser123</password><DOB>2022-12-01</DOB></user></users>
