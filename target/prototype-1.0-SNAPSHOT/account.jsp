@@ -26,7 +26,7 @@
             <ul>
                 <li> 
                         <% if (emailView != null) { %>
-                            <a href="adminView.jsp">Admin</a>
+                            <a href="admin5.jsp">Admin</a>
                         <%} else { %>
                             <a href="main.jsp">Dashboard</a>
                         <%}%>

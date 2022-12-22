@@ -38,7 +38,7 @@
                 user = users.user(emailView);
                 if (user != null) {
                     userDAO.delete(users, user);
-                    response.sendRedirect("adminView.jsp");
+                    response.sendRedirect("admin5.jsp");
                 }
             } else {
                 user = (User) session.getAttribute("user");

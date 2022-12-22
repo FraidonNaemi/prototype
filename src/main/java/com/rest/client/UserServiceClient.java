@@ -33,7 +33,7 @@ public class UserServiceClient {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
-        File file = new File("C:\\Users\\236330\\Desktop\\Java\\module3_p\\prototype\\src\\main\\webapp\\WEB-INF\\usergen.xml");
+        File file = new File("C:\\Users\\236339\\Documents\\NetBeansProjects\\prototype\\src\\main\\webapp\\WEB-INF\\usergen.xml");
         if (!file.exists()) {
             file.createNewFile();
         }
@@ -56,8 +56,8 @@ public class UserServiceClient {
     
     
     
-    public static String fetchUser() throws MalformedURLException, IOException {
-        URL uri = new URL("http://localhost:8080/prototype/rest/userapi/user/ID/123456");
+    public static String fetchUser(int ID) throws MalformedURLException, IOException {
+        URL uri = new URL("http://localhost:8080/prototype/rest/userapi/user/ID/" + ID);
         HttpURLConnection connection = (HttpURLConnection) uri.openConnection();
         connection.setRequestMethod("GET");
         connection.setRequestProperty("Accept", "application/xml");
@@ -68,7 +68,7 @@ public class UserServiceClient {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
-        File file = new File("C:\\Users\\236330\\Desktop\\Java\\module3_p\\prototype\\src\\main\\webapp\\WEB-INF\\userID.xml");
+        File file = new File("C:\\Users\\236339\\Documents\\NetBeansProjects\\prototype\\src\\main\\webapp\\WEB-INF\\userID.xml");
         if (!file.exists()) {
             file.createNewFile();
         }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<output>
+    <log>system</log>
+    <info>
+         <log>started</log>
+    </info>
+    <warning>
+        <status>
+            <log>outdated dependencies</log>
+        </status>
+    </warning>
+    <critical>
+        <log>severe</log>
+    </critical>
+</output>

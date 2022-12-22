@@ -27,6 +27,15 @@
                 <li><a href="logout.jsp">Logout</a></li>
             </ul>
         </nav>
+        <div class="string">
+            <header>Search by ID</header>
+            <form class="strings" action="adminSearch.jsp">
+                <div class="input-area-string">
+                    <input id="userID" class="input-area-string" name="userID" type="number" placeholder="ID">
+                </div>  
+            </form>
+        </div>
+
         <%
             session.invalidate();
             request.setAttribute("email", null);
@@ -34,7 +43,7 @@
         %>
         <% String filename = application.getRealPath("/WEB-INF/users.xml");%>
         <% String xslPath = application.getRealPath("/xsl/users.xsl");%>
-                <% String xslUserPath = application.getRealPath("/xsl/user.xsl");%>
+        <% String xslUserPath = application.getRealPath("/xsl/user.xsl");%>
 
         <jsp:useBean id="userDAO" class="com.model.dao.UserDAO" scope="application">
             <jsp:setProperty name="userDAO" property="fileName" value="<%=filename%>"/>
@@ -42,8 +51,9 @@
         <%
             Users users = userDAO.getUsers();
             XmlTransformer transformer = new XmlTransformer();
-            transformer.transform(xslPath, UserServiceClient.fetchUser(), new StreamResult(out));
+            transformer.transform(xslPath, users, new StreamResult(out));
         %>
+
         <!-- Clock - Footer -->
         <div class="clock">
             <span class="clock-time"></span>
